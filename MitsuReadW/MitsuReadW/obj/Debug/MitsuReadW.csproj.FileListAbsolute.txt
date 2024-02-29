@@ -1,0 +1,9 @@
+C:\Users\User\Source\Repos\MitsuReadW\MitsuReadW\bin\Debug\MitsuReadW.exe.config
+C:\Users\User\Source\Repos\MitsuReadW\MitsuReadW\bin\Debug\MitsuReadW.exe
+C:\Users\User\Source\Repos\MitsuReadW\MitsuReadW\bin\Debug\MitsuReadW.pdb
+C:\Users\User\Source\Repos\MitsuReadW\MitsuReadW\bin\Debug\HslCommunication.dll
+C:\Users\User\Source\Repos\MitsuReadW\MitsuReadW\obj\Debug\MitsuReadW.csproj.AssemblyReference.cache
+C:\Users\User\Source\Repos\MitsuReadW\MitsuReadW\obj\Debug\MitsuReadW.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\MitsuReadW\MitsuReadW\obj\Debug\MitsuReadW.csproj.CopyComplete
+C:\Users\User\Source\Repos\MitsuReadW\MitsuReadW\obj\Debug\MitsuReadW.exe
+C:\Users\User\Source\Repos\MitsuReadW\MitsuReadW\obj\Debug\MitsuReadW.pdb
