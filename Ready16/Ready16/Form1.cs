@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text;
 using System.Configuration;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Ready16
 {
@@ -16,14 +18,25 @@ namespace Ready16
         int status = 0, last = 0;
         string ipaddr = ConfigurationManager.AppSettings["ip"];
         int port = Int16.Parse(ConfigurationManager.AppSettings["port"]);
+        int clickNumb = 0;
 
 
-        private void button16_Click(object sender, EventArgs e)
+        private async void button16_Click(object sender, EventArgs e)
         {
+            clickNumb++;
             button16.Enabled = false;
+            button16.Text = "Wait..." + clickNumb.ToString();
+
+            acknRequest();
+            await Task.Delay(2000);
+            button16.Text = "Подтвердить/Обновить";
+            button16.Enabled = true;
+        }
+        private void acknRequest()
+        {
             if (ackn != "test")
             {
-                
+
                 MelsecMcNet melsec_net = new MelsecMcNet(ipaddr, port);
                 OperateResult connect = melsec_net.ConnectServer();
                 if (connect.IsSuccess)
@@ -31,7 +44,7 @@ namespace Ready16
                     //log += "[" + ackn + "]";
                     string[] wordBit = ackn.Split('.');
                     // находим номер бита, и преобразуем его в число 
-                    int num = Int16.Parse(wordBit[1],System.Globalization.NumberStyles.HexNumber);
+                    int num = Int16.Parse(wordBit[1], System.Globalization.NumberStyles.HexNumber);
                     int val = 1 << num;
                     //Считываем старое значение
                     OperateResult<Int16[]> oldvalue = melsec_net.ReadInt16(wordBit[0], 1);
@@ -45,7 +58,7 @@ namespace Ready16
                         {
                             log += "Ошибка записи Ackn ";
                         }
-                        System.Threading.Thread.Sleep(100);
+                        Thread.Sleep(100);
                         valuesToWrite[0] = oldvalue.Content[0];
                         write = melsec_net.Write(wordBit[0], valuesToWrite);
                     }
@@ -54,11 +67,12 @@ namespace Ready16
                 else
                 {
                     log += "Не смог подключиться Ackn. ";
+                    textLog.Text = log;
                 }
             }
             textLog.Text = log;
+            getValues();
         }
-
 
         public Form1()
         {   
@@ -67,6 +81,12 @@ namespace Ready16
             ButtonsColorChange();
             LabelsTextChange();
         }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void ReadArgs()
         {
             string[] args = Environment.GetCommandLineArgs();
@@ -109,38 +129,43 @@ namespace Ready16
                 }
                 else
                 {
-                    MelsecMcNet melsec_net = new MelsecMcNet(ipaddr, port);
-                    OperateResult connect = melsec_net.ConnectServer();
-                    if (connect.IsSuccess)
-                    {
-                        OperateResult<Int16[]> readStat = melsec_net.ReadInt16(stat, 1);
-                        if (readStat.IsSuccess)
-                        {
-                            status = readStat.Content[0];
-                        }
-                        else
-                        {
-                            log += "Не смог прочитать статус. ";
-                        }
-                        if (lastStat != "test")
-                        {
-                            //log += "[" + lastStat + "]";
-                            OperateResult<Int16[]> readLast = melsec_net.ReadInt16(lastStat, 1);
-                            if (readLast.IsSuccess)
-                            {
-                                last = readLast.Content[0];
-                            }
-                            else
-                            {
-                                log += "Не смог прочитать LASTстатус. ";
-                            }
-                        }
-                        melsec_net.ConnectClose();
-                    }
-                    else log += "Не смог подключиться. ";
+                    getValues();
                 }
 
             }
+        }
+        private void getValues()
+        {
+            MelsecMcNet melsec_net = new MelsecMcNet(ipaddr, port);
+            OperateResult connect = melsec_net.ConnectServer();
+            if (connect.IsSuccess)
+            {
+                OperateResult<Int16[]> readStat = melsec_net.ReadInt16(stat, 1);
+                if (readStat.IsSuccess)
+                {
+                    status = readStat.Content[0];
+                }
+                else
+                {
+                    log += "Не смог прочитать статус. ";
+                }
+                if (lastStat != "test")
+                {
+                    //log += "[" + lastStat + "]";
+                    OperateResult<Int16[]> readLast = melsec_net.ReadInt16(lastStat, 1);
+                    if (readLast.IsSuccess)
+                    {
+                        last = readLast.Content[0];
+                    }
+                    else
+                    {
+                        log += "Не смог прочитать LASTстатус. ";
+                    }
+                }
+                melsec_net.ConnectClose();
+            }
+            else log += "Не смог подключиться. ";
+            textLog.Text = log;
         }
         private void ButtonsColorChange()
         {

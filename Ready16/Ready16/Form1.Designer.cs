@@ -66,6 +66,7 @@ namespace Ready16
             this.label15 = new System.Windows.Forms.Label();
             this.textLog = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button0
@@ -472,7 +473,8 @@ namespace Ready16
             // 
             this.textLog.AutoSize = true;
             this.textLog.ForeColor = System.Drawing.Color.Red;
-            this.textLog.Location = new System.Drawing.Point(20, 317);
+            this.textLog.Location = new System.Drawing.Point(15, 308);
+            this.textLog.MaximumSize = new System.Drawing.Size(680, 0);
             this.textLog.Name = "textLog";
             this.textLog.Size = new System.Drawing.Size(41, 13);
             this.textLog.TabIndex = 2;
@@ -480,21 +482,39 @@ namespace Ready16
             // 
             // button16
             // 
+            this.button16.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button16.Location = new System.Drawing.Point(257, 314);
+            this.button16.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button16.Location = new System.Drawing.Point(218, 321);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(163, 33);
+            this.button16.Size = new System.Drawing.Size(273, 50);
             this.button16.TabIndex = 3;
-            this.button16.Text = "Подтвердить";
+            this.button16.Text = "Подтвердить/Обновить";
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button17
+            // 
+            this.button17.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button17.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button17.Location = new System.Drawing.Point(611, 308);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(70, 63);
+            this.button17.TabIndex = 4;
+            this.button17.Text = "X";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.CancelButton = this.button17;
             this.ClientSize = new System.Drawing.Size(677, 366);
+            this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.textLog);
             this.Controls.Add(this.label15);
@@ -529,6 +549,7 @@ namespace Ready16
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button0);
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -579,6 +600,7 @@ namespace Ready16
         private Label label15;
         private Label textLog;
         private Button button16;
+        private Button button17;
     }
 }
 

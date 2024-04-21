@@ -14,6 +14,7 @@ namespace MitsuReadW
         static string wordAddr, fileName = "readW.txt";
         static void Main(string[] args)
         {
+            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
             if (args.Length > 0)
             {
                 for (int i = 0; i < args.Length; i++)
@@ -48,15 +49,17 @@ namespace MitsuReadW
                     }
                     else
                     {
+                       
                         Console.WriteLine("Не смог прочитать статус. ");
-                        Console.ReadKey();
+                        System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(path) + "\\status.vbs");
                     }
                     melsec_net.ConnectClose();
                 }
                 else
                 {
+                    Console.WriteLine(System.IO.Path.GetDirectoryName(path));
                     Console.WriteLine("Не смог подключиться. ");
-                    Console.ReadKey();
+                    System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(path) + "\\connect.vbs");
                 }
             }
         }
