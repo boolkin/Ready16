@@ -32,7 +32,7 @@ namespace MitsuReadW
                     }
                 }
 
-                MelsecMcNet melsec_net = new MelsecMcNet(ipaddr, port);
+                MelsecMcAsciiNet melsec_net = new MelsecMcAsciiNet(ipaddr, port);
                 OperateResult connect = melsec_net.ConnectServer();
                 if (connect.IsSuccess)
                 {

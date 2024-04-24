@@ -25,11 +25,11 @@ namespace Ready16
         {
             clickNumb++;
             button16.Enabled = false;
-            button16.Text = "Wait..." + clickNumb.ToString();
+            button16.Text = "Wait...";
 
             acknRequest();
             await Task.Delay(2000);
-            button16.Text = "Подтвердить/Обновить";
+            button16.Text = "Подтвердить";
             button16.Enabled = true;
         }
         private void acknRequest()
@@ -37,7 +37,7 @@ namespace Ready16
             if (ackn != "test")
             {
 
-                MelsecMcNet melsec_net = new MelsecMcNet(ipaddr, port);
+                MelsecMcAsciiNet melsec_net = new MelsecMcAsciiNet(ipaddr, port);
                 OperateResult connect = melsec_net.ConnectServer();
                 if (connect.IsSuccess)
                 {
@@ -78,13 +78,24 @@ namespace Ready16
         {   
             InitializeComponent();
             ReadArgs();
-            ButtonsColorChange();
             LabelsTextChange();
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private async void button18_Click(object sender, EventArgs e)
+        {
+            button18.Enabled = false;
+            button18.Text = "...";
+
+            getValues();
+            await Task.Delay(2000);
+            button18.Text = "O";
+            button18.Enabled = true;
+            
         }
 
         private void ReadArgs()
@@ -136,7 +147,7 @@ namespace Ready16
         }
         private void getValues()
         {
-            MelsecMcNet melsec_net = new MelsecMcNet(ipaddr, port);
+            MelsecMcAsciiNet melsec_net = new MelsecMcAsciiNet(ipaddr, port);
             OperateResult connect = melsec_net.ConnectServer();
             if (connect.IsSuccess)
             {
@@ -166,6 +177,8 @@ namespace Ready16
             }
             else log += "Не смог подключиться. ";
             textLog.Text = log;
+
+            ButtonsColorChange();
         }
         private void ButtonsColorChange()
         {
@@ -189,7 +202,7 @@ namespace Ready16
                     color = Color.Red;
                 }
                 
-                if (border == 1)
+                if (border == 0)
                 {
                     buttons[i].FlatAppearance.BorderColor = color;
                 }

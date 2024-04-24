@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>a:d802.E s:D800 L:D801</StartArguments>
+    <StartArguments>a:d2286.1 s:D2284 L:D2285</StartArguments>
   </PropertyGroup>
 </Project>

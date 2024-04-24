@@ -45,3 +45,8 @@ OLE_CreateObject(%WS,"Wscript.Shell");
 res = %WS.Run("C:\Ready16\ReadWord.exe s:D800",2,1);
 result = %WS.RegRead("HKEY_CURRENT_USER\Software\ready16\value");
 ```
+
+Со стороны контроллера необходимо прогрузить настройки встроенного Ethernet порта на протокол MC. 
+При этом обратить внимание что формат данных выбран ASCII и стоит галочка online change, чтобы можно было осуществлять запись в контроллер.
+Если необходим формат Binary, то в программе нужно поменять MelsecMcAsciiNet на MelsecMcNet
+![MC_ASCII](melsecMCASCII.PNG)

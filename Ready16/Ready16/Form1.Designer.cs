@@ -67,6 +67,7 @@ namespace Ready16
             this.textLog = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button0
@@ -473,7 +474,7 @@ namespace Ready16
             // 
             this.textLog.AutoSize = true;
             this.textLog.ForeColor = System.Drawing.Color.Red;
-            this.textLog.Location = new System.Drawing.Point(15, 308);
+            this.textLog.Location = new System.Drawing.Point(3, 9);
             this.textLog.MaximumSize = new System.Drawing.Size(680, 0);
             this.textLog.Name = "textLog";
             this.textLog.Size = new System.Drawing.Size(41, 13);
@@ -489,7 +490,7 @@ namespace Ready16
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(273, 50);
             this.button16.TabIndex = 3;
-            this.button16.Text = "Подтвердить/Обновить";
+            this.button16.Text = "Подтвердить";
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
@@ -507,6 +508,20 @@ namespace Ready16
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
+            // button18
+            // 
+            this.button18.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button18.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button18.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button18.Location = new System.Drawing.Point(-8, 308);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(70, 63);
+            this.button18.TabIndex = 5;
+            this.button18.Text = "O";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,6 +529,7 @@ namespace Ready16
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.CancelButton = this.button17;
             this.ClientSize = new System.Drawing.Size(677, 366);
+            this.Controls.Add(this.button18);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.textLog);
@@ -601,6 +617,7 @@ namespace Ready16
         private Label textLog;
         private Button button16;
         private Button button17;
+        private Button button18;
     }
 }
 
